@@ -33,6 +33,15 @@ public class ProductServiceImpl implements ProductService {
         return existingProduct;
     }
 
+     @Override
+     public String delete(String productId) {
+
+        Product product = getProductById(productId);
+        productRepository.delete(product);
+
+        return productId;
+    }
+
     @Override
     public Product getProductById (String productId) {
         for (Product product : findAll()){
