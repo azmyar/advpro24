@@ -61,6 +61,4 @@ tasks.register<Test>("functionalTest") {
 
 tasks.withType<Test>().configureEach {
 	useJUnitPlatform()
- }
-
 }
