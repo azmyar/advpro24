@@ -26,13 +26,20 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public String delete(String productId) {
 
-        for (Product product : findAll()){
-            if (product.getProductId().equals(productId)){
-                productRepository.delete(product);
-            }
-        }
+        Product product = getProductById(productId);
+        productRepository.delete(product);
 
         return productId;
+    }
+
+    @Override
+    public Product getProductById (String productId) {
+        for (Product product : findAll()){
+            if (product.getProductId().equals(productId)){
+                return product;
+            }
+        }
+        return null;
     }
 
     @Override
