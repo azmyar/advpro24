@@ -24,7 +24,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public String delete(String productId) {
+    public Product edit(String productId, Product updatedProduct) {
+        Product existingProduct = getProductById(productId);
+
+        existingProduct.setProductName(updatedProduct.getProductName());
+        existingProduct.setProductQuantity(updatedProduct.getProductQuantity());
+
+        return existingProduct;
+    }
+
+     @Override
+     public String delete(String productId) {
 
         Product product = getProductById(productId);
         productRepository.delete(product);
