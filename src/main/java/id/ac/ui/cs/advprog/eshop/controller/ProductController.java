@@ -10,45 +10,50 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/")
 public class ProductController {
 
     @Autowired
     private ProductService service;
 
-    @GetMapping("/create")
+    @GetMapping("/")
+    public String homePage() {
+        return "homePage";
+    }
+
+    @GetMapping("/product/create")
     public String createProductPage(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
         return "createProduct";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/product/create")
     public String createProductPost(@ModelAttribute Product product, Model model) {
         service.create(product);
         return "redirect:list";
     }
 
-    @GetMapping("/edit")
+    @GetMapping("/product/edit")
     public String editProductPage(@RequestParam("productId") String productId, Model model) {
         Product product = service.getProductById(productId);
         model.addAttribute("product", product);
         return "editProduct";
     }
 
-    @PostMapping("/edit")
+    @PostMapping("/product/edit")
     public String editProductPost(@RequestParam("productId") String productId, @ModelAttribute Product updatedProduct) {
         service.edit(productId, updatedProduct);
         return "redirect:list";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/product/delete")
     public String deleteProductPost(@RequestParam("productId") String productId) {
         service.delete(productId);
         return "redirect:list";
     }
 
-    @GetMapping("/list")
+    @GetMapping("/product/list")
     public String productListPage(Model model) {
         List<Product> allProducts = service.findAll();
         model.addAttribute("products", allProducts);
