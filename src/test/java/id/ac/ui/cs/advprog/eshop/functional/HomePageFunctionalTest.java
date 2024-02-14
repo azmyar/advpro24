@@ -40,7 +40,6 @@ class HomePageFunctionalTest {
     void welcomeMessage_homepage_isCorrect(ChromeDriver driver) throws Exception{
         driver.get(baseUrl);
         String welcomeMessage = driver.findElement(By.tagName("h3")).getText();
-        ;
         assertEquals("Welcome", welcomeMessage);
     }
 }
