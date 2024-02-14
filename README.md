@@ -8,8 +8,6 @@
 
 ## Modul 1 : Coding Standards
 
----
-
 ### Reflection 1
 
 I've learned how to build a Springboot project, starts from how to set up the project, and learned the flow of the project itself. Additionally, I've learned and applied clean coding principles to ensure the maintainability and readability of my codebase. These principles serve as the foundation for my work, enabling me to produce clean and organized code.
@@ -31,8 +29,6 @@ c. **Modularity and Reusability:** Code is organized into modular components, pr
 ---
 
 ## Modul 2 : CI/CD and DevOps
-
----
 
 ### Reflection 1
 
