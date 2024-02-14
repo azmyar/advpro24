@@ -10,50 +10,46 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
     private ProductService service;
 
-    @GetMapping("/")
-    public String homePage() {
-        return "homePage";
-    }
-
-    @GetMapping("/product/create")
+    @GetMapping("/create")
     public String createProductPage(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
         return "createProduct";
     }
 
-    @PostMapping("/product/create")
-    public String createProductPost(@ModelAttribute Product product, Model model) {
+    @PostMapping("/create")
+    public String createProductPost(@ModelAttribute Product product) {
         service.create(product);
         return "redirect:list";
     }
 
-    @GetMapping("/product/edit")
+    @GetMapping("/edit")
     public String editProductPage(@RequestParam("productId") String productId, Model model) {
         Product product = service.getProductById(productId);
         model.addAttribute("product", product);
         return "editProduct";
     }
 
-    @PostMapping("/product/edit")
-    public String editProductPost(@RequestParam("productId") String productId, @ModelAttribute Product updatedProduct) {
-        service.edit(productId, updatedProduct);
+    @PostMapping("/edit")
+    public String editProductPost(@ModelAttribute Product product) {
+        service.edit(product);
         return "redirect:list";
     }
 
-    @GetMapping("/product/delete")
+    @GetMapping("/delete")
     public String deleteProductPost(@RequestParam("productId") String productId) {
-        service.delete(productId);
+        Product product = service.getProductById(productId);
+        service.delete(product);
         return "redirect:list";
     }
 
-    @GetMapping("/product/list")
+    @GetMapping("/list")
     public String productListPage(Model model) {
         List<Product> allProducts = service.findAll();
         model.addAttribute("products", allProducts);
