@@ -18,38 +18,22 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product create(Product product) {
-        product.setProductId(UUID.randomUUID().toString());
-        productRepository.create(product);
-        return product;
+        return productRepository.create(product);
     }
 
     @Override
-    public Product edit(String productId, Product updatedProduct) {
-        Product existingProduct = getProductById(productId);
-
-        existingProduct.setProductName(updatedProduct.getProductName());
-        existingProduct.setProductQuantity(updatedProduct.getProductQuantity());
-
-        return existingProduct;
+    public Product edit(Product product) {
+        return productRepository.edit(product);
     }
 
      @Override
-     public String delete(String productId) {
-
-        Product product = getProductById(productId);
-        productRepository.delete(product);
-
-        return productId;
+     public Product delete(Product product) {
+         return productRepository.delete(product);
     }
 
     @Override
     public Product getProductById (String productId) {
-        for (Product product : findAll()){
-            if (product.getProductId().equals(productId)){
-                return product;
-            }
-        }
-        return null;
+        return productRepository.getProductById(productId);
     }
 
     @Override
