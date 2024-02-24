@@ -54,3 +54,17 @@ A poor CI/CD setup slows down development, compromises code quality. It leads to
 
 In the future, I will prioritize improving my understanding of CI/CD principles, exploring advanced automation techniques, and staying updated with emerging DevOps tools.
 
+---
+
+## Modul 3 : OO Principles & Software Maintainability
+
+### Single Responsibility Principle (SRP)
+In the Controller, each class, such as `Product` and `Car`, is responsible for features and behaviors related to itself. For example, `Product` handles properties and behaviors related to products, while `Car` handles properties and behaviors related to cars. This separation helps in keeping the code from becoming too complex and difficult to maintain.
+
+### Liskov Substitution Principle (LSP)
+The application of the Liskov Substitution Principle (LSP) is evident in the relationship between the `Car` and `Product` classes. `Car` as a subclass of `Product` fulfills this principle by not altering the existing behavior of the `Product` class. This ensures that a `Car` object can be used as a substitute for a `Product` object without causing unintended issues.
+
+### Interface Segregation Principle (ISP)
+Isolated interfaces for specific entities ensure that implementations are only concerned with the specific needs of those entities. For example, if operations are only needed for `Product`, only relevant methods for `Product` need to be implemented through `ProductService`. This helps avoid dependencies on unnecessary or irrelevant methods.
+
+

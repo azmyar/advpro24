@@ -30,23 +30,24 @@ class CarController {
     public String carListPage (Model model) {
         List<Car> allCars = carService.findAll();
         model.addAttribute("cars", allCars);
-        return "carList";
+        return "CarList";
     }
-    @GetMapping("/editCar/{carId}")
-    public String editCarPage(@PathVariable String carId, Model model){
-        Car car = carService.findById(carId);
+    @GetMapping("/editCar")
+    public String editCarPage(@RequestParam("carId") String carId, Model model){
+        Car car = carService.getProductById(carId);
         model.addAttribute("car", car);
-        return "editCar";
+        return "EditCar";
     }
     @PostMapping("/editCar")
     public String editCarPost(@ModelAttribute Car car) {
-        carService.update(car.getCarId(), car);
+        carService.edit(car);
         return "redirect:listCar";
     }
 
-    @PostMapping("/deleteCar")
+    @GetMapping("/deleteCar")
     public String deleteCar(@RequestParam("carId") String carId) {
-        carService.deleteCarById(carId);
+        Car car = carService.getProductById(carId);
+        carService.delete(car);
         return "redirect:listCar";
     }
 

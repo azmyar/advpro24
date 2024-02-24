@@ -1,5 +1,5 @@
 package id.ac.ui.cs.advprog.eshop.controller;
-import id.ac.ui.cs.advprog.eshop.service.ProductService;
+import id.ac.ui.cs.advprog.eshop.service.ProductServiceImpl;
 
 import id.ac.ui.cs.advprog.eshop.model.Product;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ public class ProductControllerTest {
     ProductController ProductController;
 
     @Mock
-    private ProductService productService;
+    private ProductServiceImpl productService;
 
     @Mock
     private Model model;
