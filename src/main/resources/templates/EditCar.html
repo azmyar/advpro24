@@ -12,7 +12,6 @@
 
     <form th:action="@{/car/editCar(carId = ${car.carId})}" th:object="${car}" method="post" class="max-w-md bg-white p-6 rounded-md shadow-md">
 
-        <input type="hidden" th:field="*{carId}" />
         <div class="mb-4">
             <label for="carName" class="block text-sm font-medium text-gray-600">Car Name</label>
             <input type="text" id="carName" th:field="*{carName}" name="carName" th:value="${car.carName}" class="mt-1 p-2 w-full border rounded-md">

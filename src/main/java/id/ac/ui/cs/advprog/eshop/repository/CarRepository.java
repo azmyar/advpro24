@@ -19,6 +19,9 @@ public class CarRepository {
         }
 
         if (car.getCarId() == null) car.setCarId(UUID.randomUUID().toString());
+
+        System.out.println(car.getCarId());
+
         carData.add(car);
         return car;
 
@@ -28,7 +31,6 @@ public class CarRepository {
     }
 
     public Car edit(Car car) {
-
 
         if (car.getCarQuantity() < 0){
             throw new IllegalArgumentException("Invalid Product Quantity");
