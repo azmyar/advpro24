@@ -17,7 +17,7 @@ public class ProductControllerTest {
     ProductController ProductController;
 
     @Mock
-    private ProductService productService;
+    private ProductService <Product> productService;
 
     @Mock
     private Model model;
