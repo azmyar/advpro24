@@ -1,4 +1,4 @@
-package id.ac.ui.cs.advprog.eshop.functional;
+package id.ac.ui.cs.advprog.eshop.controller.functional;
 
 import io.github.bonigarcia.seljup.SeleniumJupiter;
 import org.junit.jupiter.api.BeforeEach;
