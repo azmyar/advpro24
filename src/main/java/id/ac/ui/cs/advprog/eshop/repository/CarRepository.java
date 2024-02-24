@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public class CarRepository {
-    static int id = 0;
+public class CarRepository implements IRepository<Car>{
     private List<Car> carData = new ArrayList<>();
     public Car create(Car car){
 
@@ -19,8 +18,6 @@ public class CarRepository {
         }
 
         if (car.getCarId() == null) car.setCarId(UUID.randomUUID().toString());
-
-        System.out.println(car.getCarId());
 
         carData.add(car);
         return car;
