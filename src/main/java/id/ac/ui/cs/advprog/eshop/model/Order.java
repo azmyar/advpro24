@@ -1,24 +1,24 @@
 package id.ac.ui.cs.advprog.eshop.model;
+import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Builder
 @Getter
 public class Order {
-    private String Id;
+    private String id;
     private List<Product> products;
     private Long orderTime;
     private String author;
     private String status;
 
-    public Order(String orderId, List<Product> products, Long orderTime, String author) {
-        this.Id = orderId;
+    public Order(String id, List<Product> products, Long orderTime, String author) {
+        this.id = id;
         this.orderTime = orderTime;
         this.author = author;
-        this.status = "WAITING_PAYMENT";
+        this.status = OrderStatus.WAITING_PAYMENT.getValue();
 
         if (products.isEmpty()) {
             throw new IllegalArgumentException("Your products is empty");
@@ -27,27 +27,16 @@ public class Order {
         }
     }
 
-    public Order(String orderId, List<Product> products, Long orderTime, String author, String status) {
-        this.Id = orderId;
-        this.products = products;
-        this.orderTime = orderTime;
-        this.author = author;
-
-        String[] statusList = {"WAITING_PAYMENT", "FAILED", "CANCELLED", "SUCCESS"};
-        if (Arrays.stream(statusList).noneMatch(item -> (item.equals(status)))) {
-            throw new IllegalArgumentException("Invalid status: " + status);
-        } else {
-            this.status =  status;
-        }
-
+    public Order(String id, List<Product> products, Long orderTime, String author, String status) {
+        this(id, products, orderTime, author);
+        this.setStatus(status);
     }
 
     public void setStatus(String status) {
-        String[] statusList = {"WAITING_PAYMENT", "FAILED", "CANCELLED", "SUCCESS"};
-        if (Arrays.stream(statusList).noneMatch(item -> (item.equals(status)))) {
-            throw new IllegalArgumentException("Invalid status: " + status);
-        } else {
+        if (OrderStatus.contains(status)) {
             this.status =  status;
+        } else {
+            throw new IllegalArgumentException("Invalid status: " + status);
         }
     }
 }
