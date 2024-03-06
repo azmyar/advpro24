@@ -1,46 +1,50 @@
 package id.ac.ui.cs.advprog.eshop.repository;
-import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
-import id.ac.ui.cs.advprog.eshop.model.Order;
-import id.ac.ui.cs.advprog.eshop.model.Product;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
+import id.ac.ui.cs.advprog.eshop.model.Order;
+import id.ac.ui.cs.advprog.eshop.model.Product;
 
 class OrderRepositoryTest {
     OrderRepository orderRepository;
+
     List<Order> orders;
 
     @BeforeEach
-    void setUp () {
+    void setUp(){
         orderRepository = new OrderRepository();
 
         List<Product> products = new ArrayList<>();
         Product product1 = new Product();
         product1.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
         product1.setProductName("Sampo Cap Bambang");
-        product1.setProductQuantity(2);
         products.add(product1);
 
         orders = new ArrayList<>();
         Order order1 = new Order("13652556-012a-4c07-b546-54eb1396d79b",
-            products, 1708560000L, "Safira Sudrajat");
+                products, 1708560000L, "Safira Sudrajat");
         orders.add(order1);
 
-        Order order2 = new Order("13652556-012a-4c07-b546-54eb1396d79b",
-                products, 1708560000L, "Safira Sudrajat");
+        Order order2 = new Order("7f9e15bb-4b15-42f4-aebc-c3af385fb078",
+                products, 1708570000L, "Safira Sudrajat");
         orders.add(order2);
 
-        Order order3 = new Order("13652556-012a-4c07-b546-54eb1396d79b",
-                products, 1708560000L, "Safira Sudrajat");
+        Order order3 = new Order("e334ef40-9eff-4da8-9487-8ee697ecbf1e",
+                products, 1708570000L, "Bambang Sudrajat");
         orders.add(order3);
     }
 
     @Test
-    void testSaveCreate() {
+    void testSaveCreate(){
         Order order = orders.get(1);
         Order result = orderRepository.save(order);
 
@@ -53,7 +57,7 @@ class OrderRepositoryTest {
     }
 
     @Test
-    void testSaveUpdate() {
+    void testSaveUpdate(){
         Order order = orders.get(1);
         orderRepository.save(order);
         Order newOrder = new Order(order.getId(), order.getProducts(), order.getOrderTime(),
@@ -69,8 +73,8 @@ class OrderRepositoryTest {
     }
 
     @Test
-    void testFindByIdIfIdFound() {
-        for (Order order : orders) {
+    void testFindByIdIfIdFound(){
+        for (Order order : orders){
             orderRepository.save(order);
         }
 
@@ -82,8 +86,8 @@ class OrderRepositoryTest {
     }
 
     @Test
-    void testFIndByIdIfIdNotFound() {
-        for (Order order : orders) {
+    void testFindByIdIfIdNotFound(){
+        for (Order order : orders){
             orderRepository.save(order);
         }
 
@@ -92,8 +96,8 @@ class OrderRepositoryTest {
     }
 
     @Test
-    void testFindAllByAuthorIfAuthorCorrect() {
-        for (Order order : orders) {
+    void testFindAllByAuthorIfAuthorCorrect(){
+        for (Order order : orders){
             orderRepository.save(order);
         }
 
@@ -103,7 +107,7 @@ class OrderRepositoryTest {
     }
 
     @Test
-    void testFindAllByAuthorIfAllLowercase() {
+    void testFindAllByAuthorIfAllLowercase(){
         orderRepository.save(orders.get(1));
 
         List<Order> orderList = orderRepository.findAllByAuthor(
