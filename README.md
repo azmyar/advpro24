@@ -67,4 +67,12 @@ The application of the Liskov Substitution Principle (LSP) is evident in the rel
 ### Interface Segregation Principle (ISP)
 Isolated interfaces for specific entities ensure that implementations are only concerned with the specific needs of those entities. For example, if operations are only needed for `Product`, only relevant methods for `Product` need to be implemented through `ProductService`. This helps avoid dependencies on unnecessary or irrelevant methods.
 
+---
 
+## Modul 4 : Test-Driven Development & Refactoring
+
+### TDD Flow:
+Based on the self-reflective questions from Percival (2017) regarding testing objectives, I find the TDD flow outlined to be very useful. It provides a structured approach that ensures comprehensive testing coverage, from confirming functional test sufficiency to considering integration points. Additionally, the emphasis on writing unit tests upfront promotes better code design and maintainability.
+
+### F.I.R.S.T. Principle:
+Reflecting on the unit tests created in the tutorial, I believe they successfully adhere to the F.I.R.S.T. principle. They are likely fast to execute due to their focused scope, independent from each other, and designed to be repeatable. Additionally, they should be easily validated and were presumably written before the corresponding production code.
