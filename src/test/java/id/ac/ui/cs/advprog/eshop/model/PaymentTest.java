@@ -65,11 +65,11 @@ class PaymentTest {
         Map<String, String> paymentData = new HashMap<>();
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Payment payment = new Payment("5e8aeb69-318f-4ae0-b38d-691f3ebe9307", "VOUCHER_CODE", this.orders.getFirst(), paymentData);
+            Payment payment = new Payment("5e8aeb69-318f-4ae0-b38d-691f3ebe9307", "VOUCHER_CODE", null, paymentData);
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Payment payment = new Payment("5e8aeb69-318f-4ae0-b38d-691f3ebe9307", "PAYMENT_BY_BANK_TRANSFER", this.orders.getFirst(), paymentData);
+            Payment payment = new Payment("5e8aeb69-318f-4ae0-b38d-691f3ebe9307", "PAYMENT_BY_BANK_TRANSFER", null, paymentData);
         });
     }
 
